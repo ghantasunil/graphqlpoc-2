@@ -1,0 +1,13 @@
+-- SQLite
+-- Create TABLE IF NOT EXISTS "users" (
+--     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+--     "name" TEXT NOT NULL,
+--     "email" TEXT NOT NULL,
+--     "password" TEXT NOT NULL
+-- );
+
+-- insert into users (name, email, password) values ('Alice', 'alice@email.com', 'password1');
+-- insert into users (name, email, password) values ('Bob', 'bob@ymail.com', 'password2');
+-- insert into users (name, email, password) values ('Charlie', 'charlie@zmail.com', 'password3');
+-- insert into users (name, email, password) values ('David', 'david@gmaail.com', 'password4');
+-- insert into users (name, email, password) values ('Eve', 'eve@hmail.com', 'password5'); 

@@ -1,0 +1,1 @@
+{"subgraph":"reviews","http":{"baseAddress":"http://localhost:8383/graphql"}}

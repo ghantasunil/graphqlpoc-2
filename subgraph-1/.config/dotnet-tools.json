@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "hotchocolate.fusion.commandline": {
+      "version": "14.0.0-p.176",
+      "commands": [
+        "fusion"
+      ],
+      "rollForward": false
+    },
+    "barista": {
+      "version": "8.4.0",
+      "commands": [
+        "Barista"
+      ],
+      "rollForward": false
+    }
+  }
+}
