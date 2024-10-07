@@ -1,4 +1,4 @@
-PATH_TO_PROJECT = .\src\Reviews
+PATH_TO_PROJECT = ./src/Reviews
 
 run: generate-schema package
 	dotnet run --project $(PATH_TO_PROJECT)
