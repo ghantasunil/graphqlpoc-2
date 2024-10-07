@@ -4,6 +4,7 @@ namespace Reviews.Data;
 
 public sealed class Product
 {
+    [IsProjected]
     [Column("id")]
     public int Id { get; set; }
     [Column("name")]

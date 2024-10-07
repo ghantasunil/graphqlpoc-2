@@ -4,10 +4,13 @@ namespace Reviews.Data;
 
 public sealed class Review
 {
+    [IsProjected]
     [Column("id")]
     public int Id { get; set; }
+    [IsProjected]
     [Column("user_id")]
     public int UserId { get; set; }
+    [IsProjected]
     [Column("product_id")]
     public int ProductId { get; set; }
     [Column("rating")]

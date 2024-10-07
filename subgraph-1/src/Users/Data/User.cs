@@ -4,6 +4,7 @@ namespace Users.Data;
 
 public sealed class User
 {
+    [IsProjected]
     [Column("id")]
     public int Id { get; set; }
     [Column("name")]
