@@ -1,4 +1,6 @@
-﻿using Reviews.Data;
+﻿using Microsoft.EntityFrameworkCore;
+
+using Reviews.Data;
 
 namespace Users.Types;
 
@@ -19,4 +21,13 @@ public class User
     }
 
     public int Id { get; set; }
+
+    public async Task<IReadOnlyCollection<Review>> Reviews(ReviewDbContext context)
+    {
+        return await context.Reviews
+            .AsNoTracking()
+            .Where(r => r.UserId == Id)
+            .OrderBy(r => r.Id)
+            .ToListAsync();
+    }
 }

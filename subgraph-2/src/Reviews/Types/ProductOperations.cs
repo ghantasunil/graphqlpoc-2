@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotChocolate.Fusion.SourceSchema.Types;
+
+using Microsoft.EntityFrameworkCore;
 
 using Reviews.Data;
 
@@ -6,6 +8,7 @@ namespace Users.Types;
 
 public static partial class ProductOperations
 {
+    [Lookup]
     [Query]
     public static async Task<Product?> GetProductAsync(
         int id,
