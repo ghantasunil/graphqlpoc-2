@@ -9,19 +9,17 @@
   <ItemGroup>
     <PackageReference Include="BananaCakePop.Services" Version="14.0.0-preview.8" />
     <PackageReference Include="BananaCakePop.Services.Telemetry" Version="14.0.0-preview.8" />
-    <PackageReference Include="Eventellect.Configuration" Version="4.0.4" />
-    <PackageReference Include="Eventellect.Configuration.Preview" Version="4.0.4-preview" />
-    <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.Data" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.Diagnostics" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.Fusion.SourceSchema" Version="14.0.0-p.179" />
-    <PackageReference Include="HotChocolate.Types.Analyzers" Version="14.0.0-p.179">
+    <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.Data" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.Diagnostics" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.Fusion.SourceSchema" Version="14.0.0-p.188" />
+    <PackageReference Include="HotChocolate.Types.Analyzers" Version="14.0.0-p.188">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
