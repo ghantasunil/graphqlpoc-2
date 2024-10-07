@@ -9,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
         .AddReviewsTypes()
         .ModifyOptions(options => options.DefaultQueryDependencyInjectionScope = DependencyInjectionScope.Resolver)
         .RegisterDbContextFactory<ReviewDbContext>()
+        .AddDbContextCursorPagingProvider()
+        .AddPagingArguments()
         .AddProjections()
         .AddFiltering()
-        .AddSorting()
-        .AddDbContextCursorPagingProvider()
-        .AddPagingArguments();
+        .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");
     builder.Services.AddPooledDbContextFactory<ReviewDbContext>(o => o.UseSqlite(connectionString));

@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Users.Data;
 
 namespace Users.Types;
-
 public static partial class UserOperations
 {
     [Query]
@@ -18,6 +17,6 @@ public static partial class UserOperations
         return await dbContext.Users
             .AsNoTracking()
             .Where(t => t.Id == id)
-            .FirstOrDefaultAsync<User>();
+            .FirstOrDefaultAsync(cancellationToken);
     }
 }
