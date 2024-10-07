@@ -9,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
         .AddUsersTypes()
         .ModifyOptions(options => options.DefaultQueryDependencyInjectionScope = DependencyInjectionScope.Resolver)
         .RegisterDbContextFactory<UserDbContext>()
+        .AddDbContextCursorPagingProvider()
+        .AddPagingArguments()
         .AddProjections()
         .AddFiltering()
-        .AddSorting()
-        .AddDbContextCursorPagingProvider()
-        .AddPagingArguments();
+        .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");
     builder.Services.AddPooledDbContextFactory<UserDbContext>(o => o.UseSqlite(connectionString));
