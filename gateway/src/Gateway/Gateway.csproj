@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="7.0.9" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.188" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="14.0.0-p.188" />
     <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="14.0.0-p.188" />
