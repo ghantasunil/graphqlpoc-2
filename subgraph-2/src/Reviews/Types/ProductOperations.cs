@@ -15,7 +15,7 @@ public static partial class ProductOperations
         return await dbContext.Products
             .AsNoTracking()
             .Where(t => t.Id == id)
-            .FirstOrDefaultAsync<Product>();
+            .FirstOrDefaultAsync(cancellationToken);
     }
 
     [Query]
