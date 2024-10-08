@@ -11,8 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
         .RegisterDbContextFactory<UserDbContext>()
         .AddDbContextCursorPagingProvider()
         .AddPagingArguments()
-        .AddProjections()
-        .AddFiltering()
+        //.AddProjections()
         .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");

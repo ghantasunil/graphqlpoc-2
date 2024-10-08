@@ -4,6 +4,13 @@ using Reviews.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    // 1. The middleware pipeline order for the field `Query.products` is invalid.
+    // Middleware order is important especially with data pipelines. The correct
+    // order of a data pipeline is as follows:
+    // UseDbContext -> UsePaging -> UseProjection -> UseFiltering -> UseSorting.
+    // You may omit any of these middleware or have other middleware in between
+    // but you need to abide by the overall order. Your order is:
+    // UsePaging -> UseProjection -> UseSorting -> UseProjection. (HotChocolate.Types.ObjectType)
     builder.Services.AddGraphQLServer()
         .DisableIntrospection(disable: false)
         .AddReviewsTypes()
@@ -11,8 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
         .RegisterDbContextFactory<ReviewDbContext>()
         .AddDbContextCursorPagingProvider()
         .AddPagingArguments()
-        .AddProjections()
-        .AddFiltering()
+        //.AddProjections()
         .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");

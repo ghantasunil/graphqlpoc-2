@@ -5,14 +5,24 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{9BBA13D2-9496-4AD4-9DC6-BDB00D8B6EA9}"
 	ProjectSection(SolutionItems) = preProject
+		gateway\.config\dotnet-tools.json = gateway\.config\dotnet-tools.json
+		gateway\Makefile = gateway\Makefile
 		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "gateway\src\Gateway\Gateway.csproj", "{DFAD45B0-18F7-4444-8C0A-2F3AE9A42E5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "subgraph-1", "subgraph-1", "{F08D2898-4EFB-498B-AD1B-1BB7E9FF153D}"
+	ProjectSection(SolutionItems) = preProject
+		subgraph-1\.config\dotnet-tools.json = subgraph-1\.config\dotnet-tools.json
+		subgraph-1\Makefile = subgraph-1\Makefile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "subgraph-2", "subgraph-2", "{C67A7629-F85B-42E0-8FBF-253F560F51FB}"
+	ProjectSection(SolutionItems) = preProject
+		subgraph-2\.config\dotnet-tools.json = subgraph-2\.config\dotnet-tools.json
+		subgraph-2\Makefile = subgraph-2\Makefile
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users", "subgraph-1\src\Users\Users.csproj", "{DC402D13-71BC-4BF2-8FAE-F32D55D5620E}"
 EndProject
