@@ -10,26 +10,30 @@ public static partial class ProductOperations
 {
     [Lookup]
     [Query]
-    public static async Task<Product?> GetProductAsync(
+    //[UseProjection]
+    [UseFirstOrDefault]
+    public static IQueryable<Product> GetProduct(
         int id,
         ReviewDbContext dbContext,
         CancellationToken cancellationToken)
     {
-        return await dbContext.Products
+        return dbContext.Products
+            .Include(p => p.Reviews)
             .AsNoTracking()
-            .Where(t => t.Id == id)
-            .FirstOrDefaultAsync(cancellationToken);
+            .Where(t => t.Id == id);
     }
 
     [Query]
     [UsePaging]
-    [UseProjection]
+    //[UseProjection]
+    [UseSorting]
     public static IQueryable<Product> GetProducts(
         ReviewDbContext dbContext,
         CancellationToken cancellationToken)
     {
         return dbContext.Products
-            .AsNoTracking()
-            .OrderBy(r => r.Id);
+            .Include(p => p.Reviews)
+            .OrderBy(product => product.Id)
+            .AsNoTracking();
     }
 }

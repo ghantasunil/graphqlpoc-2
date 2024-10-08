@@ -19,4 +19,16 @@ public static partial class UserOperations
             .Where(t => t.Id == id)
             .FirstOrDefaultAsync(cancellationToken);
     }
+
+    [Query]
+    [UsePaging]
+    //[UseProjection]
+    [UseSorting]
+    public static IQueryable<User> GetUsers(
+        UserDbContext dbContext)
+    {
+        return dbContext.Users
+            .OrderBy(u => u.Id)
+            .AsNoTracking();
+    }
 }

@@ -19,4 +19,7 @@ public sealed class Review
     public required string Comment { get; set; }
     [Column("created_at")]
     public required string CreatedAt { get; set; }
+
+   // [UseProjection]
+    public Product? Product { get; set; }
 }

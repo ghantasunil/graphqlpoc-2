@@ -19,6 +19,7 @@ type Product {
   name: String!
   price: Int!
   createdAt: String!
+  reviews: [Review!]
 }
 
 "A connection to a list of items."
@@ -41,9 +42,9 @@ type ProductsEdge {
 
 type Query {
   product(id: Int!): Product @lookup @cost(weight: "10")
-  products("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String): ProductsConnection @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], sizedFields: [ "edges", "nodes" ]) @cost(weight: "10")
+  products("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String order: [ProductSortInput!] @cost(weight: "10")): ProductsConnection @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], sizedFields: [ "edges", "nodes" ]) @cost(weight: "10")
   review(id: Int!): Review @lookup @cost(weight: "10")
-  reviews("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String): ReviewsConnection @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], sizedFields: [ "edges", "nodes" ]) @cost(weight: "10")
+  reviews("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String order: [ReviewSortInput!] @cost(weight: "10")): ReviewsConnection @listSize(assumedSize: 50, slicingArguments: [ "first", "last" ], sizedFields: [ "edges", "nodes" ]) @cost(weight: "10")
 }
 
 type Review {
@@ -54,6 +55,7 @@ type Review {
   rating: Int!
   comment: String!
   createdAt: String!
+  product: Product
 }
 
 "A connection to a list of items."
@@ -77,6 +79,28 @@ type ReviewsEdge {
 type User {
   reviews: [Review!]! @cost(weight: "10")
   id: Int!
+}
+
+input ProductSortInput {
+  id: SortEnumType @cost(weight: "10")
+  name: SortEnumType @cost(weight: "10")
+  price: SortEnumType @cost(weight: "10")
+  createdAt: SortEnumType @cost(weight: "10")
+}
+
+input ReviewSortInput {
+  id: SortEnumType @cost(weight: "10")
+  userId: SortEnumType @cost(weight: "10")
+  productId: SortEnumType @cost(weight: "10")
+  rating: SortEnumType @cost(weight: "10")
+  comment: SortEnumType @cost(weight: "10")
+  createdAt: SortEnumType @cost(weight: "10")
+  product: ProductSortInput @cost(weight: "10")
+}
+
+enum SortEnumType {
+  ASC
+  DESC
 }
 
 "The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."

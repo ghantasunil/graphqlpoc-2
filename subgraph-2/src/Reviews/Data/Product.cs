@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
+using HotChocolate.Fusion.SourceSchema.Types;
+
 namespace Reviews.Data;
 
 public sealed class Product
 {
-    [IsProjected]
     [Column("id")]
     public int Id { get; set; }
     [Column("name")]
@@ -13,4 +14,10 @@ public sealed class Product
     public required int Price { get; set; }
     [Column("created_at")]
     public required string CreatedAt { get; set; }
+
+    //[UsePaging]
+    //[UseProjection]
+    //[UseSorting]
+    public List<Review>? Reviews { get; set; }
+
 }
