@@ -1,7 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-using HotChocolate.Fusion.SourceSchema.Types;
-
 namespace Reviews.Data;
 
 public sealed class Product
@@ -15,9 +13,6 @@ public sealed class Product
     [Column("created_at")]
     public required string CreatedAt { get; set; }
 
-    //[UsePaging]
-    //[UseProjection]
-    //[UseSorting]
     public List<Review>? Reviews { get; set; }
 
 }

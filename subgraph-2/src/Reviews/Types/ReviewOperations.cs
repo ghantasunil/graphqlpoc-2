@@ -1,7 +1,3 @@
-using GreenDonut.Projections;
-
-using HotChocolate.Data.Sorting;
-using HotChocolate.Execution.Processing;
 using HotChocolate.Fusion.SourceSchema.Types;
 using HotChocolate.Pagination;
 
@@ -15,6 +11,7 @@ public static partial class ReviewOperations
 {
     [Lookup]
     [Query]
+    [UseProjection]
     public static async Task<Review?> GetReviewAsync(
         int id,
         ReviewDbContext dbContext,
@@ -28,7 +25,7 @@ public static partial class ReviewOperations
 
     [Query]
     [UsePaging]
-    //[UseProjection]
+    [UseProjection]
     [UseSorting]
     public static IQueryable<Review> GetReviews(
         ReviewDbContext dbContext)
@@ -39,14 +36,27 @@ public static partial class ReviewOperations
     }
 
     [Lookup]
-    public static async Task<Page<Review>?> GetReviewsByUserIdAsync(
+    public static async Task<IReadOnlyCollection<Review>?> GetReviewsByUserIdAsync(
         [Is("user { id }")] int id,
-        ISelection selection,
-        ReviewByUserIdDataLoader reviewByUserId,
+        ReviewDbContext dbContext,
         CancellationToken cancellationToken)
-        => await reviewByUserId
-            .Select(selection)
-            .LoadAsync(id, cancellationToken);
+    {
+        return await dbContext.Reviews
+            .AsNoTracking()
+            .Where(r => r.UserId == id)
+            .OrderBy(r => r.Id)
+            .ToListAsync(cancellationToken);
+    }
+
+    //[Lookup]
+    //public static async Task<Page<Review>?> GetReviewsByUserIdAsync(
+    //    [Is("user { id }")] int id,
+    //    ISelection selection,
+    //    ReviewByUserIdDataLoader reviewByUserId,
+    //    CancellationToken cancellationToken)
+    //    => await reviewByUserId
+    //        .Select(selection)
+    //        .LoadAsync(id, cancellationToken);
 }
 
 public sealed class ReviewDataLoader

@@ -23,17 +23,23 @@ public static partial class ProductOperations
             .Where(t => t.Id == id);
     }
 
-    [Query]
-    [UsePaging]
-    //[UseProjection]
-    [UseSorting]
-    public static IQueryable<Product> GetProducts(
-        ReviewDbContext dbContext,
-        CancellationToken cancellationToken)
-    {
-        return dbContext.Products
-            .Include(p => p.Reviews)
-            .OrderBy(product => product.Id)
-            .AsNoTracking();
-    }
+    //[Query]
+    //[UsePaging]
+    ////[UseProjection]
+    //[UseSorting]
+    //public static async Task<Product?> GetProducts( // Changed return type to Product?
+    //    ReviewDbContext dbContext,
+    //    [IsSelected("reviews")] bool includeReviews = false,
+    //    CancellationToken cancellationToken = default)
+    //{
+    //    var query = dbContext.Products.AsNoTracking();
+
+    //    if (includeReviews)
+    //    {
+    //        query = query.Include(p => p.Reviews);
+    //    }
+
+    //    return await query.OrderBy(product => product.Id)
+    //        .FirstOrDefaultAsync(cancellationToken);
+    //}
 }

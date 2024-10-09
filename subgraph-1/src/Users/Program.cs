@@ -1,6 +1,6 @@
-using Users.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Sqlite;
+
+using Users.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -8,10 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
         .DisableIntrospection(disable: false)
         .AddUsersTypes()
         .ModifyOptions(options => options.DefaultQueryDependencyInjectionScope = DependencyInjectionScope.Resolver)
+        .ModifyRequestOptions(configure =>
+        {
+            configure.IncludeExceptionDetails = true;
+            configure.EnableSchemaFileSupport = true;
+        })
         .RegisterDbContextFactory<UserDbContext>()
         .AddDbContextCursorPagingProvider()
         .AddPagingArguments()
-        //.AddProjections()
+        .AddProjections()
         .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");
@@ -20,7 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    app.UseWebSockets();    
+    app.UseWebSockets();
     app.MapGraphQL();
 
     await app.RunWithGraphQLCommandsAsync(args);

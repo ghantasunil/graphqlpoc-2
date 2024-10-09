@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
         .RegisterDbContextFactory<ReviewDbContext>()
         .AddDbContextCursorPagingProvider()
         .AddPagingArguments()
-        //.AddProjections()
+        .AddProjections()
         .AddSorting();
 
     var connectionString = builder.Configuration.GetConnectionString("default");
